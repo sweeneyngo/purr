@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Open the browser console to see pixel requests.</p>
+    <p>Make sure to turn off adblocker(s) to prevent blocked requests.</p>
+    <script>
+        // Purr tracking snippet
+        (function () {
+            try {
+                var u = new URL("http://localhost:8080/pixel.gif");
+                u.searchParams.set("js", "1");
+                u.searchParams.set("p", location.pathname);
+                u.searchParams.set("t", document.title.slice(0, 120));
+                u.searchParams.set("w", String(window.innerWidth || 0));
+                u.searchParams.set("h", String(window.innerHeight || 0));
+                u.searchParams.set("dpr", String(window.devicePixelRatio || 1));
+                u.searchParams.set("lang", (navigator.language || "").slice(0, 16));
+                u.searchParams.set("ref", document.referrer || "");
+
+                var img = new Image(1, 1);
+                img.decoding = "async";
+                img.referrerPolicy = "strict-origin-when-cross-origin";
+                img.src = u.toString();
+                console.log("Tracking pixel sent:", img.src);
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+    <noscript>
+        <img src="http://localhost:8080/pixel.gif" width="1" height="1" alt="">
+    </noscript>
+</body>
+
+</html>

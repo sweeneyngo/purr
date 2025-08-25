@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  purr:
+    image: purr:latest
+    container_name: purr
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - data:/app/
+    environment:
+      - TZ=UTC
+    restart: unless-stopped
+
+volumes:
+  purr_data:
