@@ -1,12 +1,12 @@
-# Purr
+# purr
 
-![Purr](https://img.shields.io/badge/privacy-focused-brightgreen)
+![purr](https://img.shields.io/badge/privacy-focused-brightgreen)
 
 A **privacy-focused web analytics tool**. Collects page view data without cookies or any personally-identifiable information, so no GDPR notice is required.
 
 ---
 
-Purr uses a **1x1 transparent pixel** to capture analytics.
+purr uses a **1x1 transparent pixel** to capture analytics.
 
 1. **JavaScript-enabled tracking**: dynamically creates an `<img>` element with page info encoded in the URL.
 2. **No-JS fallback**: uses a static `<img>` and the HTTP Referer to infer page details.
